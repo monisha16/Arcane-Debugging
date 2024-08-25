@@ -19,7 +19,15 @@ export const Dashboard: React.FC = () => {
               if (existing) {
                 return existing;
               }
-              return condition;
+              /**
+               * Issue: 
+               * The eligibility checks from both sources were referencing the same objects. 
+               * This caused unexpected results when toggling, as structuredClone preserved the shared reference between the checks.
+               * 
+               * Fix:
+               * Creating new object references for each check, ensuring that changes to one check do not unintentionally affect others.
+             */
+              return {...condition, passed: false}
             }),
           },
         };

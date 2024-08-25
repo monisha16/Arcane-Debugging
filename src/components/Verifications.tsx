@@ -13,7 +13,7 @@ export const Verifications: React.FC<Props> = ({ verifications, onChange }) => {
     v[vIndex].eligibility.checks[cIndex].passed = value;
     onChange(v);
   };
-
+  
   return (
     <>
       {verifications.map((verification, vIndex) => {
